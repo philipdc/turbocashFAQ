@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How to troubleshoot and fix database connection errors in TurboCASH">
+    <title>Database Connection Errors - TurboCASH FAQ</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Schema.org structured data for semantic web -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": {
+            "@type": "Question",
+            "name": "How do I fix database connection errors in TurboCASH?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Database connection errors in TurboCASH can occur due to incorrect connection settings, firewall issues, or database service problems. Check your connection string, ensure the database service is running, verify firewall settings, and confirm user permissions."
+            }
+        },
+        "datePublished": "2025-11-17",
+        "dateModified": "2025-11-17"
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>TurboCASH FAQ</h1>
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span>›</span>
+                <span>Database Connection Errors</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <article class="faq-item">
+            <h2 class="faq-question">How do I fix database connection errors in TurboCASH?</h2>
+            
+            <div class="metadata">
+                Last updated: November 17, 2025 | Category: Common Problems
+            </div>
+
+            <div class="faq-answer">
+                <h3>Problem Description</h3>
+                <p>
+                    Database connection errors are one of the most common issues users encounter 
+                    when working with TurboCASH. These errors typically prevent the application 
+                    from starting or accessing financial data.
+                </p>
+
+                <div class="error-box">
+                    <strong>Common Error Messages:</strong>
+                    <ul>
+                        <li>"Unable to connect to database"</li>
+                        <li>"Connection timeout"</li>
+                        <li>"Database server not found"</li>
+                        <li>"Access denied for user"</li>
+                    </ul>
+                </div>
+
+                <h3>Common Causes</h3>
+                <ol>
+                    <li><strong>Incorrect connection settings</strong> - Wrong server address, port, or database name</li>
+                    <li><strong>Database service not running</strong> - MySQL/PostgreSQL service stopped</li>
+                    <li><strong>Firewall blocking connections</strong> - Port blocked by firewall or antivirus</li>
+                    <li><strong>Invalid credentials</strong> - Wrong username or password</li>
+                    <li><strong>Network issues</strong> - For remote databases, network connectivity problems</li>
+                </ol>
+
+                <h3>Solutions</h3>
+
+                <h4>1. Verify Database Service is Running</h4>
+                <div class="solution-box">
+                    <p><strong>For Windows:</strong></p>
+                    <ol>
+                        <li>Press <code>Win + R</code> and type <code>services.msc</code></li>
+                        <li>Look for your database service (e.g., "MySQL" or "PostgreSQL")</li>
+                        <li>Ensure the service status is "Running"</li>
+                        <li>If not, right-click and select "Start"</li>
+                    </ol>
+
+                    <p><strong>For Linux:</strong></p>
+                    <pre><code>sudo systemctl status mysql
+# or
+sudo systemctl status postgresql
+
+# To start the service:
+sudo systemctl start mysql</code></pre>
+                </div>
+
+                <h4>2. Check Connection Settings</h4>
+                <div class="solution-box">
+                    <p>Verify your connection configuration file:</p>
+                    <ul>
+                        <li>Location: <code>TurboCASH/config/database.ini</code></li>
+                        <li>Check: Server address, port number, database name</li>
+                        <li>Default MySQL port: 3306</li>
+                        <li>Default PostgreSQL port: 5432</li>
+                    </ul>
+                    
+                    <p><strong>Example configuration:</strong></p>
+                    <pre><code>[Database]
+Server=localhost
+Port=3306
+Database=turbocash_db
+Username=turbocash_user
+Password=your_password</code></pre>
+                </div>
+
+                <h4>3. Test Database Connection</h4>
+                <div class="solution-box">
+                    <p>Use command-line tools to test connectivity:</p>
+                    
+                    <p><strong>MySQL:</strong></p>
+                    <pre><code>mysql -h localhost -P 3306 -u turbocash_user -p
+# Enter password when prompted</code></pre>
+
+                    <p><strong>PostgreSQL:</strong></p>
+                    <pre><code>psql -h localhost -p 5432 -U turbocash_user -d turbocash_db</code></pre>
+                </div>
+
+                <h4>4. Check Firewall Settings</h4>
+                <div class="warning-box">
+                    <strong>Warning:</strong> Be cautious when modifying firewall rules. 
+                    Only open necessary ports and restrict access appropriately.
+                </div>
+                
+                <div class="solution-box">
+                    <p><strong>Windows Firewall:</strong></p>
+                    <ol>
+                        <li>Open Windows Defender Firewall</li>
+                        <li>Click "Advanced settings"</li>
+                        <li>Check "Inbound Rules" for MySQL/PostgreSQL</li>
+                        <li>Create a new rule if needed for port 3306 or 5432</li>
+                    </ol>
+
+                    <p><strong>Linux (UFW):</strong></p>
+                    <pre><code>sudo ufw allow 3306/tcp  # MySQL
+# or
+sudo ufw allow 5432/tcp  # PostgreSQL</code></pre>
+                </div>
+
+                <h4>5. Verify User Permissions</h4>
+                <div class="solution-box">
+                    <p>Ensure the database user has proper permissions:</p>
+                    
+                    <p><strong>MySQL:</strong></p>
+                    <pre><code>GRANT ALL PRIVILEGES ON turbocash_db.* TO 'turbocash_user'@'localhost';
+FLUSH PRIVILEGES;</code></pre>
+
+                    <p><strong>PostgreSQL:</strong></p>
+                    <pre><code>GRANT ALL PRIVILEGES ON DATABASE turbocash_db TO turbocash_user;</code></pre>
+                </div>
+
+                <h3>Advanced Troubleshooting</h3>
+                
+                <div class="info-box">
+                    <h4>Check Database Logs</h4>
+                    <p><strong>MySQL logs:</strong> Usually in <code>/var/log/mysql/error.log</code> (Linux) 
+                    or <code>C:\ProgramData\MySQL\MySQL Server X.X\Data\</code> (Windows)</p>
+                    
+                    <p><strong>PostgreSQL logs:</strong> Check <code>/var/log/postgresql/</code> (Linux) 
+                    or <code>C:\Program Files\PostgreSQL\X.X\data\log\</code> (Windows)</p>
+                </div>
+
+                <h3>Prevention Tips</h3>
+                <ul>
+                    <li>Set database service to start automatically on system boot</li>
+                    <li>Keep regular backups of connection configuration files</li>
+                    <li>Document any custom connection settings</li>
+                    <li>Use strong passwords and change them regularly</li>
+                    <li>Monitor database service health regularly</li>
+                </ul>
+
+                <div class="tags">
+                    <span class="tag">Database</span>
+                    <span class="tag">Connection</span>
+                    <span class="tag">Troubleshooting</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">PostgreSQL</span>
+                </div>
+            </div>
+        </article>
+
+        <section class="related-faqs">
+            <h3>Related FAQs</h3>
+            <ul>
+                <li><a href="database-setup.html">Setting up the Database</a></li>
+                <li><a href="backup-restore-problems.html">Backup and Restore Problems</a></li>
+                <li><a href="data-corruption.html">Data Corruption Recovery</a></li>
+                <li><a href="slow-performance.html">Slow Performance Issues</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="no-print">
+        <p>
+            <a href="../index.html">← Back to FAQ Index</a> | 
+            <a href="https://github.com/philipdc/turbocashFAQ">Contribute on GitHub</a>
+        </p>
+    </footer>
+</body>
+</html>

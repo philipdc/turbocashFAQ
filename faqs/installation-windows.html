@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Step-by-step guide to installing TurboCASH on Windows operating systems">
+    <title>Installing TurboCASH on Windows - TurboCASH FAQ</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to Install TurboCASH on Windows",
+        "description": "Complete installation guide for TurboCASH accounting software on Windows",
+        "step": [
+            {
+                "@type": "HowToStep",
+                "name": "Download TurboCASH",
+                "text": "Download the latest Windows installer from the official TurboCASH website"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Install Database",
+                "text": "Install MySQL or PostgreSQL database server"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Run Installer",
+                "text": "Execute the TurboCASH installer and follow the setup wizard"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "Configure Database",
+                "text": "Configure database connection settings"
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>TurboCASH FAQ</h1>
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span>›</span>
+                <span>Installing TurboCASH on Windows</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <article class="faq-item">
+            <h2 class="faq-question">How do I install TurboCASH on Windows?</h2>
+            
+            <div class="metadata">
+                Last updated: November 17, 2025 | Category: Installation & Setup
+            </div>
+
+            <div class="faq-answer">
+                <h3>Overview</h3>
+                <p>
+                    TurboCASH is an open-source accounting application that requires a database 
+                    backend (MySQL or PostgreSQL). This guide walks you through the complete 
+                    installation process on Windows systems.
+                </p>
+
+                <div class="info-box">
+                    <strong>System Requirements:</strong>
+                    <ul>
+                        <li>Windows 7 or later (Windows 10/11 recommended)</li>
+                        <li>2 GB RAM minimum (4 GB recommended)</li>
+                        <li>500 MB free disk space for application</li>
+                        <li>Additional space for database (varies by usage)</li>
+                        <li>Screen resolution: 1024x768 or higher</li>
+                    </ul>
+                </div>
+
+                <h3>Step 1: Download TurboCASH</h3>
+                <div class="solution-box">
+                    <ol>
+                        <li>Visit the official TurboCASH GitHub releases page</li>
+                        <li>Download the latest Windows installer (<code>TurboCASH-Setup-X.X.X.exe</code>)</li>
+                        <li>Verify the file size and checksum if provided</li>
+                        <li>Save the installer to a convenient location (e.g., Downloads folder)</li>
+                    </ol>
+                </div>
+
+                <h3>Step 2: Install Database Server</h3>
+                <p>
+                    TurboCASH requires a database backend. You can choose either MySQL or PostgreSQL.
+                </p>
+
+                <h4>Option A: Installing MySQL</h4>
+                <div class="solution-box">
+                    <ol>
+                        <li>Download MySQL Community Server from the official MySQL website</li>
+                        <li>Run the MySQL installer</li>
+                        <li>Choose "Developer Default" or "Server only" setup type</li>
+                        <li>Set a strong root password (remember this!)</li>
+                        <li>Configure MySQL to run as a Windows Service</li>
+                        <li>Complete the installation wizard</li>
+                    </ol>
+                    
+                    <p><strong>Recommended settings:</strong></p>
+                    <ul>
+                        <li>Port: 3306 (default)</li>
+                        <li>Character Set: utf8mb4</li>
+                        <li>Authentication: Use Strong Password Encryption</li>
+                    </ul>
+                </div>
+
+                <h4>Option B: Installing PostgreSQL</h4>
+                <div class="solution-box">
+                    <ol>
+                        <li>Download PostgreSQL from the official PostgreSQL website</li>
+                        <li>Run the PostgreSQL installer</li>
+                        <li>Accept the default installation directory</li>
+                        <li>Set a strong password for the postgres superuser</li>
+                        <li>Keep the default port (5432)</li>
+                        <li>Complete the installation</li>
+                    </ol>
+                </div>
+
+                <h3>Step 3: Create TurboCASH Database</h3>
+                
+                <h4>For MySQL:</h4>
+                <div class="solution-box">
+                    <p>Open MySQL Command Line Client or MySQL Workbench and run:</p>
+                    <pre><code>CREATE DATABASE turbocash_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'turbocash_user'@'localhost' IDENTIFIED BY 'your_secure_password';
+GRANT ALL PRIVILEGES ON turbocash_db.* TO 'turbocash_user'@'localhost';
+FLUSH PRIVILEGES;</code></pre>
+                </div>
+
+                <h4>For PostgreSQL:</h4>
+                <div class="solution-box">
+                    <p>Open pgAdmin or psql command line and run:</p>
+                    <pre><code>CREATE DATABASE turbocash_db;
+CREATE USER turbocash_user WITH PASSWORD 'your_secure_password';
+GRANT ALL PRIVILEGES ON DATABASE turbocash_db TO turbocash_user;</code></pre>
+                </div>
+
+                <h3>Step 4: Install TurboCASH</h3>
+                <div class="solution-box">
+                    <ol>
+                        <li>Right-click the downloaded installer and select "Run as Administrator"</li>
+                        <li>If Windows SmartScreen appears, click "More info" then "Run anyway"</li>
+                        <li>Accept the GNU GPL license agreement</li>
+                        <li>Choose installation directory (default: <code>C:\Program Files\TurboCASH</code>)</li>
+                        <li>Select components to install:
+                            <ul>
+                                <li>✓ Core Application (required)</li>
+                                <li>✓ Documentation (recommended)</li>
+                                <li>✓ Sample Data (optional, useful for testing)</li>
+                            </ul>
+                        </li>
+                        <li>Create Start Menu shortcuts (recommended)</li>
+                        <li>Click "Install" to begin installation</li>
+                        <li>Wait for the installation to complete</li>
+                    </ol>
+                </div>
+
+                <h3>Step 5: Initial Configuration</h3>
+                <div class="solution-box">
+                    <p>When you first launch TurboCASH:</p>
+                    <ol>
+                        <li>The Setup Wizard will start automatically</li>
+                        <li>Select your database type (MySQL or PostgreSQL)</li>
+                        <li>Enter database connection details:
+                            <ul>
+                                <li>Server: <code>localhost</code></li>
+                                <li>Port: <code>3306</code> (MySQL) or <code>5432</code> (PostgreSQL)</li>
+                                <li>Database Name: <code>turbocash_db</code></li>
+                                <li>Username: <code>turbocash_user</code></li>
+                                <li>Password: (the password you created earlier)</li>
+                            </ul>
+                        </li>
+                        <li>Click "Test Connection" to verify settings</li>
+                        <li>If successful, click "Next" to initialize the database</li>
+                        <li>Create your first company profile</li>
+                        <li>Set up basic accounting preferences</li>
+                    </ol>
+                </div>
+
+                <h3>Step 6: Verify Installation</h3>
+                <div class="solution-box">
+                    <p>Check that everything is working correctly:</p>
+                    <ul>
+                        <li>TurboCASH application launches without errors</li>
+                        <li>You can log in with your credentials</li>
+                        <li>Database connection is successful</li>
+                        <li>Main menu and modules are accessible</li>
+                        <li>Create a test transaction to verify functionality</li>
+                    </ul>
+                </div>
+
+                <h3>Troubleshooting Common Installation Issues</h3>
+                
+                <h4>Installer Won't Run</h4>
+                <div class="warning-box">
+                    <strong>Solution:</strong>
+                    <ul>
+                        <li>Ensure you're running as Administrator</li>
+                        <li>Temporarily disable antivirus software</li>
+                        <li>Check Windows Event Viewer for error details</li>
+                        <li>Verify the installer isn't corrupted (check file size/checksum)</li>
+                    </ul>
+                </div>
+
+                <h4>Database Connection Fails</h4>
+                <div class="warning-box">
+                    <strong>Solution:</strong>
+                    <ul>
+                        <li>Verify database service is running (check Services.msc)</li>
+                        <li>Double-check username, password, and database name</li>
+                        <li>Test connection using MySQL Workbench or pgAdmin</li>
+                        <li>See <a href="database-connection-errors.html">Database Connection Errors FAQ</a></li>
+                    </ul>
+                </div>
+
+                <h4>Missing .NET Framework or Dependencies</h4>
+                <div class="warning-box">
+                    <strong>Solution:</strong>
+                    <ul>
+                        <li>Install .NET Framework 4.7.2 or later from Microsoft</li>
+                        <li>Install Visual C++ Redistributables if prompted</li>
+                        <li>Run Windows Update to ensure system is current</li>
+                    </ul>
+                </div>
+
+                <h3>Post-Installation Tasks</h3>
+                <ul>
+                    <li>Set up regular database backups (see <a href="backup-restore-problems.html">Backup FAQ</a>)</li>
+                    <li>Configure user accounts and permissions</li>
+                    <li>Import your chart of accounts</li>
+                    <li>Set up company information and preferences</li>
+                    <li>Configure tax/VAT settings for your region</li>
+                    <li>Customize invoice templates</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>Security Recommendations:</strong>
+                    <ul>
+                        <li>Use strong, unique passwords for database accounts</li>
+                        <li>Keep TurboCASH and database software updated</li>
+                        <li>Enable Windows Firewall</li>
+                        <li>Regular backups to external media or cloud storage</li>
+                        <li>Restrict database access to localhost unless needed</li>
+                    </ul>
+                </div>
+
+                <div class="tags">
+                    <span class="tag">Installation</span>
+                    <span class="tag">Windows</span>
+                    <span class="tag">Setup</span>
+                    <span class="tag">Database</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">PostgreSQL</span>
+                </div>
+            </div>
+        </article>
+
+        <section class="related-faqs">
+            <h3>Related FAQs</h3>
+            <ul>
+                <li><a href="database-setup.html">Setting up the Database</a></li>
+                <li><a href="first-time-configuration.html">First-time Configuration</a></li>
+                <li><a href="database-connection-errors.html">Database Connection Errors</a></li>
+                <li><a href="installation-linux.html">Installing TurboCASH on Linux</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="no-print">
+        <p>
+            <a href="../index.html">← Back to FAQ Index</a> | 
+            <a href="https://github.com/philipdc/turbocashFAQ">Contribute on GitHub</a>
+        </p>
+    </footer>
+</body>
+</html>

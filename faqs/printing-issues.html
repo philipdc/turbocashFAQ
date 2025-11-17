@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Solutions for common printing problems in TurboCASH including invoice printing, report formatting, and printer configuration">
+    <title>Printing Issues - TurboCASH FAQ</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": {
+            "@type": "Question",
+            "name": "How do I fix printing issues in TurboCASH?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Common printing issues in TurboCASH include formatting problems, blank pages, and printer connectivity issues. Solutions include checking printer drivers, adjusting print settings, verifying report templates, and ensuring proper paper size configuration."
+            }
+        },
+        "datePublished": "2025-11-17",
+        "dateModified": "2025-11-17"
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>TurboCASH FAQ</h1>
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span>›</span>
+                <span>Printing Issues</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <article class="faq-item">
+            <h2 class="faq-question">How do I fix printing issues in TurboCASH?</h2>
+            
+            <div class="metadata">
+                Last updated: November 17, 2025 | Category: Common Problems
+            </div>
+
+            <div class="faq-answer">
+                <h3>Overview</h3>
+                <p>
+                    Printing problems are common in accounting software and can affect invoices, 
+                    reports, and statements. This guide covers the most frequent printing issues 
+                    and their solutions.
+                </p>
+
+                <h3>Common Printing Problems</h3>
+
+                <h4>1. Invoices or Reports Print Blank</h4>
+                <div class="error-box">
+                    <strong>Symptoms:</strong>
+                    <ul>
+                        <li>Print preview shows content but printed page is blank</li>
+                        <li>Only headers/footers print</li>
+                        <li>Partial content appears on printed page</li>
+                    </ul>
+                </div>
+
+                <div class="solution-box">
+                    <strong>Solutions:</strong>
+                    <ol>
+                        <li><strong>Update Printer Drivers</strong>
+                            <ul>
+                                <li>Visit printer manufacturer's website</li>
+                                <li>Download latest drivers for your model and Windows version</li>
+                                <li>Uninstall old drivers before installing new ones</li>
+                            </ul>
+                        </li>
+                        <li><strong>Check Print as Image Option</strong>
+                            <ul>
+                                <li>In print dialog, click "Advanced"</li>
+                                <li>Enable "Print as Image" or similar option</li>
+                                <li>This often resolves driver compatibility issues</li>
+                            </ul>
+                        </li>
+                        <li><strong>Try Different Printer</strong>
+                            <ul>
+                                <li>Test with PDF printer (Microsoft Print to PDF)</li>
+                                <li>If PDF works, issue is with physical printer driver</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <h4>2. Formatting Issues / Text Cut Off</h4>
+                <div class="error-box">
+                    <strong>Symptoms:</strong>
+                    <ul>
+                        <li>Text extends beyond page margins</li>
+                        <li>Columns misaligned</li>
+                        <li>Content overlaps</li>
+                        <li>Wrong font sizes</li>
+                    </ul>
+                </div>
+
+                <div class="solution-box">
+                    <strong>Solutions:</strong>
+                    
+                    <p><strong>Adjust Page Setup:</strong></p>
+                    <ol>
+                        <li>Go to File → Page Setup</li>
+                        <li>Verify paper size (A4, Letter, etc.)</li>
+                        <li>Check margins:
+                            <pre><code>Top: 0.5 inch (1.27 cm)
+Bottom: 0.5 inch (1.27 cm)
+Left: 0.75 inch (1.9 cm)
+Right: 0.75 inch (1.9 cm)</code></pre>
+                        </li>
+                        <li>Set orientation (Portrait/Landscape)</li>
+                    </ol>
+
+                    <p><strong>Modify Report Template:</strong></p>
+                    <ul>
+                        <li>Go to Tools → Report Designer</li>
+                        <li>Open the problematic report template</li>
+                        <li>Adjust column widths and field positions</li>
+                        <li>Test with Print Preview before saving</li>
+                    </ul>
+                </div>
+
+                <h4>3. Printer Not Found / Connection Error</h4>
+                <div class="error-box">
+                    <strong>Symptoms:</strong>
+                    <ul>
+                        <li>"Printer not found" error</li>
+                        <li>Selected printer doesn't appear in list</li>
+                        <li>Print job stuck in queue</li>
+                    </ul>
+                </div>
+
+                <div class="solution-box">
+                    <strong>Solutions:</strong>
+                    
+                    <p><strong>Windows Printer Troubleshooting:</strong></p>
+                    <ol>
+                        <li>Open Control Panel → Devices and Printers</li>
+                        <li>Verify printer shows as "Ready" (not "Offline")</li>
+                        <li>Right-click printer → Set as Default Printer</li>
+                        <li>Check printer cable/network connection</li>
+                        <li>Restart Print Spooler service:
+                            <pre><code>1. Press Win + R, type: services.msc
+2. Find "Print Spooler"
+3. Right-click → Restart</code></pre>
+                        </li>
+                    </ol>
+
+                    <p><strong>Clear Print Queue:</strong></p>
+                    <ol>
+                        <li>Open Control Panel → Devices and Printers</li>
+                        <li>Double-click your printer</li>
+                        <li>Click Printer → Cancel All Documents</li>
+                        <li>If stuck, restart Print Spooler service (see above)</li>
+                    </ol>
+                </div>
+
+                <h4>4. Invoice Logo Doesn't Print</h4>
+                <div class="solution-box">
+                    <strong>Solutions:</strong>
+                    <ol>
+                        <li><strong>Check Logo File:</strong>
+                            <ul>
+                                <li>Ensure logo file exists in correct location</li>
+                                <li>Recommended formats: PNG, JPG (avoid BMP)</li>
+                                <li>Optimal size: 300x100 pixels or smaller</li>
+                                <li>File size: Under 500 KB</li>
+                            </ul>
+                        </li>
+                        <li><strong>Verify Template Settings:</strong>
+                            <ul>
+                                <li>Tools → Invoice Templates</li>
+                                <li>Edit template → Check logo path</li>
+                                <li>Ensure "Print Logo" option is enabled</li>
+                            </ul>
+                        </li>
+                        <li><strong>Re-upload Logo:</strong>
+                            <ul>
+                                <li>Company Settings → Logo</li>
+                                <li>Remove existing logo</li>
+                                <li>Upload new logo file</li>
+                                <li>Test print preview</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <h4>5. Slow Printing / Performance Issues</h4>
+                <div class="solution-box">
+                    <strong>Solutions:</strong>
+                    <ul>
+                        <li><strong>Reduce Report Complexity:</strong>
+                            <ul>
+                                <li>Limit date ranges for large reports</li>
+                                <li>Remove unnecessary columns</li>
+                                <li>Disable images/graphics if not needed</li>
+                            </ul>
+                        </li>
+                        <li><strong>Printer Settings:</strong>
+                            <ul>
+                                <li>Lower print quality for drafts (600 DPI → 300 DPI)</li>
+                                <li>Disable "High Quality" or "Best" mode</li>
+                                <li>Use printer's "Draft" or "Fast" mode</li>
+                            </ul>
+                        </li>
+                        <li><strong>Network Printers:</strong>
+                            <ul>
+                                <li>Check network connection speed</li>
+                                <li>Consider installing printer drivers locally</li>
+                                <li>Update printer firmware</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h3>Printer Configuration Best Practices</h3>
+
+                <h4>Setting Default Printer in TurboCASH</h4>
+                <div class="solution-box">
+                    <ol>
+                        <li>Go to Tools → Options → Printing</li>
+                        <li>Select default printer for:
+                            <ul>
+                                <li>Invoices</li>
+                                <li>Reports</li>
+                                <li>Statements</li>
+                            </ul>
+                        </li>
+                        <li>Set default paper size for each document type</li>
+                        <li>Configure number of copies</li>
+                        <li>Save settings</li>
+                    </ol>
+                </div>
+
+                <h4>Creating Custom Print Templates</h4>
+                <div class="info-box">
+                    <strong>Steps:</strong>
+                    <ol>
+                        <li>Tools → Report Designer</li>
+                        <li>Select report type (Invoice, Statement, etc.)</li>
+                        <li>Click "New Template" or edit existing</li>
+                        <li>Adjust layout, fonts, colors</li>
+                        <li>Add/remove fields as needed</li>
+                        <li>Use Print Preview extensively while editing</li>
+                        <li>Save template with descriptive name</li>
+                        <li>Set as default if desired</li>
+                    </ol>
+                </div>
+
+                <h3>Testing Print Setup</h3>
+                <div class="solution-box">
+                    <p><strong>Before printing important documents:</strong></p>
+                    <ol>
+                        <li>Use Print Preview to verify layout</li>
+                        <li>Print a test page to draft/recycled paper</li>
+                        <li>Check all fields are populated correctly</li>
+                        <li>Verify margins and alignment</li>
+                        <li>Confirm logo and graphics appear properly</li>
+                        <li>Test with different paper sizes if needed</li>
+                    </ol>
+                </div>
+
+                <h3>Alternative: Export to PDF</h3>
+                <div class="info-box">
+                    <p>If printing continues to be problematic, consider PDF export:</p>
+                    <ul>
+                        <li>More reliable across different systems</li>
+                        <li>Better for email distribution</li>
+                        <li>Archival purposes</li>
+                        <li>No printer driver dependencies</li>
+                    </ul>
+                    
+                    <p><strong>To export:</strong></p>
+                    <ol>
+                        <li>Open report/invoice</li>
+                        <li>Click "Export" or "Save As"</li>
+                        <li>Choose PDF format</li>
+                        <li>Select destination folder</li>
+                        <li>Print PDF using any PDF reader</li>
+                    </ol>
+                </div>
+
+                <h3>Advanced Troubleshooting</h3>
+
+                <h4>Registry Settings (Windows)</h4>
+                <div class="warning-box">
+                    <strong>Warning:</strong> Editing registry can cause system problems if done incorrectly. 
+                    Back up registry before making changes.
+                </div>
+
+                <div class="solution-box">
+                    <p>Reset print settings in registry:</p>
+                    <ol>
+                        <li>Press Win + R, type: <code>regedit</code></li>
+                        <li>Navigate to: <code>HKEY_CURRENT_USER\Software\TurboCASH\Printing</code></li>
+                        <li>Delete the Printing key (it will be recreated)</li>
+                        <li>Restart TurboCASH</li>
+                        <li>Reconfigure print settings</li>
+                    </ol>
+                </div>
+
+                <h4>Check Application Logs</h4>
+                <div class="solution-box">
+                    <p>Review TurboCASH logs for printing errors:</p>
+                    <ul>
+                        <li>Location: <code>C:\Users\[Username]\AppData\Local\TurboCASH\Logs\</code></li>
+                        <li>Look for files: <code>print_errors.log</code> or <code>application.log</code></li>
+                        <li>Search for keywords: "print", "printer", "error"</li>
+                        <li>Error codes can help identify specific issues</li>
+                    </ul>
+                </div>
+
+                <h3>When to Contact Support</h3>
+                <ul>
+                    <li>Printing works in other applications but not TurboCASH</li>
+                    <li>Error persists after trying all solutions</li>
+                    <li>Specific error codes appear in logs</li>
+                    <li>Need custom template development</li>
+                    <li>Printer model has known compatibility issues</li>
+                </ul>
+
+                <div class="tags">
+                    <span class="tag">Printing</span>
+                    <span class="tag">Invoices</span>
+                    <span class="tag">Reports</span>
+                    <span class="tag">Troubleshooting</span>
+                    <span class="tag">Templates</span>
+                </div>
+            </div>
+        </article>
+
+        <section class="related-faqs">
+            <h3>Related FAQs</h3>
+            <ul>
+                <li><a href="report-generation-issues.html">Report Generation Issues</a></li>
+                <li><a href="creating-invoices.html">Creating Invoices</a></li>
+                <li><a href="slow-performance.html">Slow Performance Issues</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="no-print">
+        <p>
+            <a href="../index.html">← Back to FAQ Index</a> | 
+            <a href="https://github.com/philipdc/turbocashFAQ">Contribute on GitHub</a>
+        </p>
+    </footer>
+</body>
+</html>
